@@ -1,26 +1,35 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.login',
-    'myApp.home'
-]).
-config(['$routeProvider', function($routeProvider) {
+angular.module('myApp', ['ngRoute', 'QF_controllers'])
+
+.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
 
-      .when('/home', {
-          templateUrl: 'home/home.html',
-          controller: 'HomeCtrl'
-  })
-      .when('/login', {
-          templateUrl: 'login/login.html',
-          controller: 'LoginCtrl'
-  }).
-      otherwise({redirectTo: '/login'});
+        .when('/home', {
+            templateUrl: 'views/home.html',
+            controller: 'HomeCtrl'
+        })
+        .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'LoginCtrl'
+        })
+        .when('/nav', {
+            templateUrl: 'nav.html',
+            controller: 'HomeCtrl'
+        })
+        .when('/profile', {
+            templateUrl: 'profile.html'
+            //controller: 'HomeCtrl'
+        })
+        .otherwise({
+            redirectTo: '/login'
+        });
 
-}]).value('userSession', {})
+}])
+
+.value('userSession', {})
 
 //
 //.run(function( $rootScope , $location){
